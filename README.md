@@ -1,5 +1,15 @@
 # IOT-Assignment-3
 
+
+
+
+---
+
+## Preparing the Wiring
+
+
+
+
 ---
 
 ## Running the Program
