@@ -7,6 +7,15 @@
 
 ## Preparing the Wiring
 
+You will need:
+- Photoresistor
+- LED
+- Resistor
+- 5 wires
+- Breadboard
+- Raspberry Pi (obviously)
+
+
 On the photoresistor:
 - Connect the VCC power to a 5V pin on the PI
 - Connect the GND to a GND pin on the PI
