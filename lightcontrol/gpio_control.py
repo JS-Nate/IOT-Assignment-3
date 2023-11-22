@@ -3,11 +3,11 @@ from .models import Setting
 
 
 # Set up the GPIO channels
-LED_PIN = 18
-LDR_PIN = 4
+led_pin = 18
+photoresistor_pin = 4
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(LDR_PIN, GPIO.IN)
-GPIO.setup(LED_PIN, GPIO.OUT)
+GPIO.setup(photoresistor_pin, GPIO.IN)
+GPIO.setup(led_pin, GPIO.OUT)
 
 def toggle_led():
     # Get the first Setting instance from the database
@@ -15,9 +15,9 @@ def toggle_led():
     
     # Check if a Setting instance exists and auto_mode is off
     if setting and not setting.auto_mode:
-        current_state = GPIO.input(LED_PIN)
+        current_state = GPIO.input(led_pin)
         new_state = not current_state
-        GPIO.output(LED_PIN, new_state)
+        GPIO.output(led_pin, new_state)
         setting.led_state = new_state  # Update the model with the new LED state
         setting.save()
         return new_state
@@ -29,7 +29,7 @@ def get_led_state():
     setting = Setting.objects.first()
     
     if setting:
-        current_state = GPIO.input(LED_PIN)
+        current_state = GPIO.input(led_pin)
         
         # Check if the hardware state differs from the database state
         if current_state != setting.led_state:
@@ -39,8 +39,8 @@ def get_led_state():
     return None  # If no setting is found
 
 def read_ldr():
-    # Read the digital value (0 or 1) from the LDR's D0 pin
-    return GPIO.input(LDR_PIN)
+    # Read the digital value (0 or 1) from the photoresistor's D0 pin
+    return GPIO.input(photoresistor_pin)
 
 # Add this function to your gpio_control.py
 def control_led_with_ldr():
@@ -48,8 +48,10 @@ def control_led_with_ldr():
     setting = Setting.objects.first()
     
     if setting and setting.auto_mode:
-        # If the LDR output is LOW (0), it means it's dark, and the LED should be ON
+        # If the photoresistor output is LOW (0), it means it's dark, and the LED should be ON
         led_on = read_ldr()  # This will be True when it's dark, and False when it's light
-        GPIO.output(LED_PIN, led_on)
+        GPIO.output(led_pin, led_on)
         setting.led_state = led_on
         setting.save()
+
+
