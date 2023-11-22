@@ -3,7 +3,7 @@
 
 
 
+Running the program:
+To start the program, clone the repository and navigate to it in your terminal
 
-
-
-#Running the Code
+Run the following commands:
