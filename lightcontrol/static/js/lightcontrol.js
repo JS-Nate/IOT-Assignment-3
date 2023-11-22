@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-     // Define a function to update the Auto Mode state display and button text
+     // defines a function to update the Auto Mode state display and button text
     function updateAutoModeState(state) {
         // Update the text content depending on the auto mode state (true/false)
         autoButtonDisplay.textContent = state ? 'On' : 'Off';
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     
-    // Define a function to update the LED state display and indicator on the page
+    // defines a function to update the LED state display and indicator on the page
     function updateLedState(state) {
         // Update the text content depending on the state (true/false)
         ledButtonDisplay.textContent = state ? 'On' : 'Off';
