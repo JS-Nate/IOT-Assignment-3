@@ -1,9 +1,20 @@
 # IOT-Assignment-3
 
 
+# Light Control
+
+Brief project description goes here.
+
+## Running the Program
+
+To run the program, follow these steps:
+
+### 1. Clone the Repository
+
+Clone the repository using the following command:
+
+```bash
+git clone https://github.com/your-username/your-repository.git
+cd your-repository
 
 
-Running the program:
-To start the program, clone the repository and navigate to it in your terminal
-
-Run the following commands:
