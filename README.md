@@ -11,13 +11,13 @@ To get started with the program, follow these steps:
 Clone the repository to your local machine using the following command:
 
 ```bash
-git clone https://github.com/JS-Nate/IOT-Assignment-3
+git clone https://github.com/JS-Nate/IOT-Assignment-3 Light-Control
 ```
 
 Navigate to the project directory:
 
 ```bash
-cd your-repository
+cd Light-Control
 ```
 
 ### 2. Apply Migrations
