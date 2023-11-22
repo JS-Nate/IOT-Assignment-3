@@ -82,3 +82,6 @@ Now, you can use the app as normal.
 ## Using the Program
 
 
+###Manual Mode
+Clicking MANUAL ON wil enable the LED. It will also disable the ability to enable AUTO mode while MANUAL mode is on
+
