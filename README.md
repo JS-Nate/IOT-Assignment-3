@@ -7,6 +7,7 @@
 
 ## Preparing the Wiring
 
+
 You will need:
 - Photoresistor
 - LED
