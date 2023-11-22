@@ -7,7 +7,10 @@
 
 ## Preparing the Wiring
 
-
+On the photoresistor:
+Connect the VCC power to a 5V pin on the PI
+Connect the GND to a GND pin on the PI
+Connect the D0 signal pin to GPIO Pin 4 on the Pi
 
 
 ---
