@@ -13,7 +13,7 @@ To run the program, follow these steps:
 
 Clone the repository using the following command:
 
-```bash
+``bash
 git clone https://github.com/your-username/your-repository.git
 cd your-repository
 
