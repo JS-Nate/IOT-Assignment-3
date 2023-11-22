@@ -1,8 +1,5 @@
 # IOT-Assignment-3
 
-
-Certainly! Here's a refined version for your GitHub README:
-
 ---
 
 ## Running the Program
