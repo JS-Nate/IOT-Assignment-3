@@ -10,6 +10,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var pollingInterval; // Variable to store the interval for polling
 
+
+
+     // Define a function to update the Auto Mode state display and button text
+    function updateAutoModeState(state) {
+        // Update the text content depending on the auto mode state (true/false)
+        autoButtonDisplay.textContent = state ? 'On' : 'Off';
+        // Update the classes for styling the Auto Mode indicator and button
+        if(state) {
+            autoModeIndicator.classList.remove('led-off');
+            autoModeIndicator.classList.add('led-on');
+            autoModeButton.classList.add('btn-success');
+        } else {
+            autoModeIndicator.classList.remove('led-on');
+            autoModeIndicator.classList.add('led-off');
+            autoModeButton.classList.remove('btn-success');
+        }
+    }
+
+
+    
     // Define a function to update the LED state display and indicator on the page
     function updateLedState(state) {
         // Update the text content depending on the state (true/false)
@@ -26,23 +46,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Define a function to update the Auto Mode state display and button text
-    function updateAutoModeState(state) {
-        // Update the text content depending on the auto mode state (true/false)
-        autoButtonDisplay.textContent = state ? 'On' : 'Off';
-        // Update the classes for styling the Auto Mode indicator and button
-        if(state) {
-            autoModeIndicator.classList.remove('led-off');
-            autoModeIndicator.classList.add('led-on');
-            autoModeButton.classList.add('btn-success');
-        } else {
-            autoModeIndicator.classList.remove('led-on');
-            autoModeIndicator.classList.add('led-off');
-            autoModeButton.classList.remove('btn-success');
-        }
-    }
+   
 
-    // Define a function to fetch the LDR state and update the LED accordingly
+    // fetches the photoresistor's state and updates the led
     function pollLdrAndUpdateLed() {
         // Make a GET request to the server endpoint
         fetch('/lightcontrol/control_led_with_ldr/', { method: 'GET' })
