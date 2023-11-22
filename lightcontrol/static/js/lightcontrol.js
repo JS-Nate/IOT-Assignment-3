@@ -2,11 +2,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Grab references to the buttons and display elements in the HTML
     var toggleButton = document.getElementById('toggleButton');
-    var autoModeButton = document.getElementById('autoModeButton');
-    var ledButtonDisplay = document.getElementById('toggleButton');
     var autoButtonDisplay = document.getElementById('autoModeButton');
     var ledIndicator = document.getElementById('ledIndicator');
     var autoModeIndicator = document.getElementById('autoModeIndicator');
+    var autoModeButton = document.getElementById('autoModeButton');
+    var ledButtonDisplay = document.getElementById('toggleButton');
+
     var pollingInterval; // Variable to store the interval for polling
 
     // Define a function to update the LED state display and indicator on the page
@@ -56,22 +57,9 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
-    // Add an event listener to the toggle button for click events
-    toggleButton.addEventListener('click', function() {
-        // Make a GET request to toggle the LED on or off
-        fetch('/lightcontrol/toggle/', { method: 'GET' })
-            .then(response => response.json()) // Parse the JSON response
-            .then(data => {
-                // Update the LED state based on the response
-                updateLedState(data.led_state);
-            })
-            .catch((error) => {
-                // Log any errors to the console
-                console.error('Error:', error);
-            });
-    });
+    
 
-    // Add an event listener to the auto mode button for click events
+    // Upon clicking the auto mode
     autoModeButton.addEventListener('click', function() {
         // Make a GET request to toggle the auto mode on or off
         fetch('/lightcontrol/toggle_auto_mode/', { method: 'GET' })
@@ -87,6 +75,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     // If Auto Mode is turned off, stop polling
                     clearInterval(pollingInterval);
                 }
+            })
+            .catch((error) => {
+                // Log any errors to the console
+                console.error('Error:', error);
+            });
+    });
+
+
+
+    // upon clicking the manual mode
+    toggleButton.addEventListener('click', function() {
+        // get request to switch the LED on or off
+        fetch('/lightcontrol/toggle/', { method: 'GET' })
+            .then(response => response.json()) // Parse the JSON response
+            .then(data => {
+                // updates the LED state based on the led's status
+                updateLedState(data.led_state);
             })
             .catch((error) => {
                 // Log any errors to the console
