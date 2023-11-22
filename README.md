@@ -89,7 +89,8 @@ Clicking MANUAL ON wil enable the LED. It will also disable the ability to enabl
 
 ### Auto Mode
 
-Clicking Auto Mode will enable the photoresistor. When the surrounding envidonment is lit up, the LED will be off. However if the surrounding light level is low or you cover the sensor of the photoresistor (do not touch it directly), the LED will enable
+Clicking Auto Mode will enable the photoresistor. When the surrounding envidonment is lit up, the LED will be off. However while the surrounding light level is low or you cover the sensor of the photoresistor (do not touch it directly), the LED will turn on.
+The LED being on in AUTO mode will also update the button and indication of MANUAL mode that it is on
 
 
 
