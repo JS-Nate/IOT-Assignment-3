@@ -23,10 +23,10 @@ On the photoresistor:
 - Connect the D0 signal pin to GPIO Pin 4 on the Pi
 
 LED
-- Connect the long end to GPIO Pin 18 on the PI
-- Connect the other end to one end of the resistor
+- Connect the long(+) end to GPIO Pin 18 on the PI
+- Connect the other short(-) end to one end of the resistor
 
-LED
+Resistor
 - Connect the other end of the resistor to a GND pin on the PI
 
 ---
