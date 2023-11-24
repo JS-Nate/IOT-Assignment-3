@@ -29,6 +29,11 @@ LED
 Resistor
 - Connect the other end of the resistor to a GND pin on the PI
 
+
+![Assignment 3 Wiring](https://github.com/JS-Nate/IOT-Assignment-3/assets/94251955/de78df86-af86-4f02-938a-f10a3b109a7e)
+
+
+
 ---
 
 ## Running the Program
