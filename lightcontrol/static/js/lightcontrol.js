@@ -3,13 +3,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Grab references to the buttons and display elements in the HTML
     var toggleButton = document.getElementById('toggleButton');
     var autoButtonDisplay = document.getElementById('autoModeButton');
-    var ledIndicator = document.getElementById('ledIndicator');
+    var manualIndicator = document.getElementById('manualIndicator');
     var autoModeIndicator = document.getElementById('autoModeIndicator');
     var autoModeButton = document.getElementById('autoModeButton');
-    var ledButtonDisplay = document.getElementById('toggleButton');
+    var ledButton = document.getElementById('toggleButton');
 
-    var pollingInterval; // Variable to store the interval for polling
-
+    // Variable to store the time gap
+    var timeGap; 
 
 
      // defines a function to update the Auto Mode state display and button text
@@ -33,15 +33,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // defines a function to update the LED state display and indicator on the page
     function updateLedState(state) {
         // Update the text content depending on the state (true/false)
-        ledButtonDisplay.textContent = state ? 'On' : 'Off';
+        ledButton.textContent = state ? 'On' : 'Off';
         // Update the classes for styling the LED indicator and toggle button
         if(state) {
-            ledIndicator.classList.remove('led-off');
-            ledIndicator.classList.add('led-on');
+            manualIndicator.classList.remove('led-off');
+            manualIndicator.classList.add('led-on');
             toggleButton.classList.add('btn-success');
         } else {
-            ledIndicator.classList.remove('led-on');
-            ledIndicator.classList.add('led-off');
+            manualIndicator.classList.remove('led-on');
+            manualIndicator.classList.add('led-off');
             toggleButton.classList.remove('btn-success');
         }
     }
@@ -76,10 +76,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (data.auto_mode) {
                     // If Auto Mode is turned on, start polling at intervals
                     // refreshes eery half second for faster response
-                    pollingInterval = setInterval(pollLdrAndUpdateLed, 500); 
+                    timeGap = setInterval(pollLdrAndUpdateLed, 500); 
                 } else {
                     // If Auto Mode is turned off, stop polling
-                    clearInterval(pollingInterval);
+                    clearInterval(timeGap);
                 }
             })
             .catch((error) => {
@@ -132,6 +132,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add an event listener for the window's beforeunload event
     window.addEventListener('beforeunload', function() {
         // Clear the polling interval when the window is about to be unloaded
-        clearInterval(pollingInterval);
+        clearInterval(timeGap);
     });
 });
