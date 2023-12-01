@@ -3,7 +3,18 @@
 
 ## Code Description
 
-
+- `lightcontrol/`: This Django application oversees the management of the lighting system.
+- `models.py`: This file defines the data model for configuring system settings.
+- `urls.py`: Within this file, URL declarations specific to the application are established.
+- `views.py`: Responsible for handling requests and generating responses for the web interface.
+- `gpio_control.py`: Houses functions facilitating interactions with GPIO pins, utilized for LED and LDR operations.
+- `templates/dashboard.html`: Contains HTML templates utilized in crafting the web interface.
+- `static/js/lightcontrol.js`: This directory stores static files such as CSS and JavaScript, contributing to frontend interactivity.
+- `myhomeautomation/`: The principal project directory housing settings and root configurations.
+- `settings.py`: Within this file, settings and configurations for the Django project are specified.
+- `urls.py`: This file encompasses URL declarations for the entire Django project.
+- `db.sqlite3`: The SQLite database file preserving the application's persistent data.
+- `manage.py`: The Django command-line utility designed for executing administrative tasks.
 
 
 ---
