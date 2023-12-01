@@ -32,9 +32,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // defines a function to update the LED state display and indicator on the page
     function updateLedState(state) {
-        // Update the text content depending on the state (true/false)
+        // updates the text on the buttons based on the current state
         ledButton.textContent = state ? 'On' : 'Off';
-        // Update the classes for styling the LED indicator and toggle button
+        // toggles the on-screen indicator on/off
         if(state) {
             manualIndicator.classList.remove('led-off');
             manualIndicator.classList.add('led-on');
@@ -50,40 +50,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // fetches the photoresistor's state and updates the led
     function pollLdrAndUpdateLed() {
-        // Make a GET request to the server endpoint
         fetch('/lightcontrol/control_led_with_ldr/', { method: 'GET' })
             .then(response => response.json()) // Parse the JSON response
             .then(data => {
-                // Update the LED state based on the response
+                // updates the led's state
                 updateLedState(data.led_state);
             })
             .catch((error) => {
-                // Log any errors to the console
+                // error handling
                 console.error('Error:', error);
             });
     }
 
     
 
-    // Upon clicking the auto mode
+    // auto mode functionality
     autoModeButton.addEventListener('click', function() {
-        // Make a GET request to toggle the auto mode on or off
         fetch('/lightcontrol/toggle_auto_mode/', { method: 'GET' })
-            .then(response => response.json()) // Parse the JSON response
+            .then(response => response.json())
             .then(data => {
-                // Update the Auto Mode state based on the response
+                // toggles and updates the state of auto mode
                 updateAutoModeState(data.auto_mode);
                 if (data.auto_mode) {
-                    // If Auto Mode is turned on, start polling at intervals
+                    // starts the refreshing when auto is enables
                     // refreshes eery half second for faster response
                     timeGap = setInterval(pollLdrAndUpdateLed, 500); 
                 } else {
-                    // If Auto Mode is turned off, stop polling
+                    // stop the refreshing
                     clearInterval(timeGap);
                 }
             })
             .catch((error) => {
-                // Log any errors to the console
+                // error handling
                 console.error('Error:', error);
             });
     });
@@ -100,34 +98,36 @@ document.addEventListener('DOMContentLoaded', function() {
                 updateLedState(data.led_state);
             })
             .catch((error) => {
-                // Log any errors to the console
+                // error handling
                 console.error('Error:', error);
             });
     });
 
-    // Perform an initial check of the LED state when the page loads
+    // checks auto mode upon loading the web page
+    fetch('/lightcontrol/auto_mode_state/', { method: 'GET' })
+        .then(response => response.json())
+        .then(data => {
+            // to update the auto mode
+            updateAutoModeState(data.auto_mode);
+        })
+        .catch((error) => {
+            // handles errors
+            console.error('Error:', error);
+        });
+    
+    // gets the LED state
     fetch('/lightcontrol/state/', { method: 'GET' })
-        .then(response => response.json()) // Parse the JSON response
+        .then(response => response.json())
         .then(data => {
             // Update the LED state based on the response
             updateLedState(data.led_state);
         })
         .catch((error) => {
-            // Log any errors to the console
+            // handles errors
             console.error('Error:', error);
         });
 
-    // Perform an initial check of the Auto Mode state when the page loads
-    fetch('/lightcontrol/auto_mode_state/', { method: 'GET' })
-        .then(response => response.json())
-        .then(data => {
-            // Update the Auto Mode state based on the response
-            updateAutoModeState(data.auto_mode);
-        })
-        .catch((error) => {
-            // Log any errors to the console
-            console.error('Error:', error);
-        });
+    
 
     // Add an event listener for the window's beforeunload event
     window.addEventListener('beforeunload', function() {
